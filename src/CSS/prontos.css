@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+}
+
+.container-prontos {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px 10px;
+    height: auto;
+    overflow: hidden;
+}
+
+.prontos-scroll {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
+}
+
+.prontos-scroll::-webkit-scrollbar {
+    display: none; /* Oculta a barra de rolagem no Chrome, Safari e Edge */
+}
+
+.prontos {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.chamando {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #BE0E19;
+    height: 180px;
+    border-radius: 30px;
+    margin: 15px 0 20px 0;
+    position: relative;
+    padding-top: 8px;
+}
+
+.pos {
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    font-size: 30px;
+}
+
+.chamando p {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 00;
+    text-align: center;
+}
+
+.chamando h1 {
+    font-size: 5em;
+    font-weight: 700;
+}
+
+.name {
+    position: absolute;
+    top: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px;
+    font-size: 22px;
+    white-space: nowrap;
+}
+
+.naoveio {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    color: #909090;
+}
+
+.chamando span {
+    font-size: 14px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #fff;
+}
+
+.pedidos-prontos {
+    min-width: 80px;
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px 10px 0;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+}
+
+.titulo-prontos {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+}

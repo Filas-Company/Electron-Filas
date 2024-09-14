@@ -1,0 +1,89 @@
+.custom-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 24px;
+  padding-top: 37px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 90vw; 
+  max-width: 335px; 
+  min-height: 240px;
+  height: auto; 
+  box-sizing: border-box; /* Inclui padding e border na largura e altura */
+}
+
+.custom-modal-header {
+  position: relative; /* Necessário para que o botão "X" possa ser posicionado absolutamente */
+  display: flex;
+  align-items: center; /* Centraliza verticalmente o conteúdo */
+  margin-bottom: 0px; /* Espaço abaixo do header */
+  padding: 0 20px; /* Espaçamento interno lateral */
+}
+
+.custom-modal-header h2 {
+  margin: 0;
+  flex: 1; /* O <h2> ocupará o máximo espaço disponível à esquerda */
+}
+
+.custom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.input-number {
+  padding: 10px;
+  margin-bottom: 30px;
+  margin-top: 13px;
+  font-size: 1.1em;
+  border: 1px solid #ccc;
+  border-radius: 24px;
+  color: #424242;
+  font-weight: 600;
+  width: 100%; /* Ajusta a largura ao tamanho do container */
+  max-width: 300px; /* Largura máxima */
+  height: 50px;
+  box-sizing: border-box; /* Inclui padding e border na largura e altura */
+}
+
+.alert-text {
+  padding-left: 3px;
+  font-size: 1.1em;
+  color: #424242;
+  font-weight: 600;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Espaçamento entre os botões */
+  width: 100%; /* Ajusta a largura ao tamanho do container */
+}
+
+.cancel-button, .confirm-button {
+  height: 50px;
+  flex: 1;
+  border-radius: 24px;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  cursor: pointer;
+  border: none;
+}
+
+.cancel-button {
+  background-color: white;
+  color: #B17A5B;
+  border: 1px solid #B17A5B;
+}
+
+.confirm-button {
+  background-color: #B17A5B;
+  color: white;
+}

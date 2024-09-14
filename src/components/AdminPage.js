@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import Pronto from './components/prontosadm';
-import './CSS/admin.css';
+import Pronto from './prontosadm';
 
 function AdminPage() {
   const [itens, setItens] = useState([]);

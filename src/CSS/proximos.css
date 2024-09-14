@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.container-proximos {
+    width: 100%;
+    margin: 0px auto 0;
+    padding: 0px 10px 0px;
+}
+
+.filas {
+    font-size: 18px;
+    width: 100%;
+    background-color: #ffffff;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    border-radius: 30px;
+    margin: 10px auto 0;
+    margin-bottom: 20px;
+    border: 1px solid #cdcdcd;
+    position: relative;
+}
+.filas-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin: 0;
+    border: none; /* Remove bordas */
+    outline: none; /* Remove o contorno de foco */
+    background: transparent; /* Remove o fundo */
+    text-align: left;
+    width: 50%; /* Garante que eles ocupem o mesmo espaço */
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
+}
+.senha {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-weight: 300;
+    font-size: 1.7em;  
+}
+.code {
+    margin-right: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    width: 200px; 
+    gap: 5px;
+}
+
+.btn {
+    width: 50px;
+    height: 50px; 
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.lugar {
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    background-color: #BE0E19;
+    border-radius: 30px;
+    font-weight: 900px;
+}
+
+.titulo-proximos {
+    margin-left: 0;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+
+.invert-on-hover:hover {
+    opacity: 100%;
+}
+
+.highlighted {
+    background-color: #B17A5B;
+    color: white;
+    font-weight: 800;
+}
+.highlighted p {
+    font-weight: 700;
+}
+
+.senha-user {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 20px;
+}
+
+.ver-tudo {
+    background: none;
+    border: none; 
+    color: inherit;
+    padding: 0; 
+    cursor: pointer;
+    color: #9d9d9d;
+}
