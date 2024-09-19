@@ -1,84 +1,21 @@
 import { useState, useEffect } from 'react';
 import Pronto from './components/prontosadm';
 import './CSS/admin.css';
+import { getData, insertDocument, updateDocument, updateFila, updateVoltar, deleteDocument } from './api.js';
 
 function AdminPage() {
   const [itens, setItens] = useState([]);
   const [filtro, setFiltro] = useState('todos'); // Estado para o filtro
 
-  function getData() {
-    fetch('http://localhost:3000/fila/list', { method: "GET" })
-      .then(response => response.json())
-      .then(data => setItens(data));
-  }
-
-  async function getLastItem() {
-    try {
-      const response = await fetch('http://localhost:3000/fila/list');
-      const data = await response.json();
-      const ordemItem = data.reduce((max, item) => (item.ordem > max ? item.ordem : max), 0);
-      return ordemItem;
-    } catch (error) {
-      console.error("Erro ao obter a lista de itens:", error);
-      return 0;
-    }
-  }
-
-  async function insertDocument() {
-    const lastItem = await getLastItem();
-    const newItem = lastItem + 1;
-    fetch('http://localhost:3000/fila/add', {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ "text": "", "active": true, "codigo": (newItem * 100), "ordem": newItem })
-    })
-      .then(response => response.json())
-      .then(() => getData());
-  }
-
-  function updateDocument(item) {
-    fetch('http://localhost:3000/fila/update', {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(item)
-    })
-      .then(response => response.json())
-      .then(() => getData());
-  }
-
-  function updateFila(item) {
-    fetch('http://localhost:3000/fila/updatefila', {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(item)
-    })
-      .then(response => response.json())
-      .then(() => getData());
-  }
-
-  function updateVoltar(item) {
-    fetch('http://localhost:3000/fila/voltar', {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(item)
-    })
-      .then(response => response.json())
-      .then(() => getData());
-  }
-
-  async function deleteDocument(item) {
-    fetch('http://localhost:3000/fila/delete', {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(item)
-    })
-      .then(response => response.json())
-      .then(() => getData());
-  }
-
   useEffect(() => {
-    getData();
+    fetchData();
   }, []);
+
+  // Função para obter e atualizar a lista de itens
+  const fetchData = async () => {
+    const data = await getData();
+    setItens(data);
+  };
 
   // Filtra os itens com base no filtro selecionado
   const itensFiltrados = itens.filter(item => {
@@ -94,7 +31,7 @@ function AdminPage() {
         <h1 className='titulo-adm'>FILA CATUAI</h1>
 
         <div className="filtros">
-          <button className='btn-novo' onClick={insertDocument}>Inserir Novo</button>
+          <button className='btn-novo' onClick={() => insertDocument().then(fetchData)}>Inserir Novo</button>
           
           <label htmlFor="filtro"></label>
           <select
