@@ -26,6 +26,15 @@ export async function insertDocument() {
   return response.json();
 }
 
+export async function insertPrint(item) {
+  const response = await fetch(`${API_URL}/add`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text: item.text, codigo: item.codigo, ordem: item.ordem })
+  });
+  return response.json();
+}
+
 // Função para atualizar um documento
 export async function updateDocument(item) {
   const response = await fetch(`${API_URL}/update`, {

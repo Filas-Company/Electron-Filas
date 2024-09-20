@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Pronto from './components/prontosadm';
 import './CSS/admin.css';
-import { getData, insertDocument, updateDocument, updateFila, updateVoltar, deleteDocument } from './api.js';
+import { getData, insertDocument, updateDocument, updateFila, updateVoltar, deleteDocument, insertPrint } from './api.js';
 
 // Adicione a importação do ipcRenderer
 const { ipcRenderer } = window.require('electron');
@@ -14,18 +14,16 @@ function AdminPage() {
   useEffect(() => {
     fetchData();
 
-    // Adiciona o event listener para a tecla 'Z'
-    const handleKeyPress = (event) => {
-      if (event.key === 'z' || event.key === 'Z') {
-        captureScreenshot(); // Chama a função de captura quando a tecla "Z" for pressionada
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
+    // Escuta o evento de captura de tela vindo do main.js
+    ipcRenderer.on('screenshot-captured', (event, resultObject) => {
+      console.log('Screenshot capturada:', resultObject);
+      setDadosPrint(resultObject); // Atualiza o estado com os dados da captura
+      insertPrint(resultObject); // Insere no banco de dados
+    });
 
     // Remove o event listener quando o componente for desmontado
     return () => {
-      window.removeEventListener('keydown', handleKeyPress);
+      ipcRenderer.removeAllListeners('screenshot-captured');
     };
   }, []);
 
@@ -41,6 +39,7 @@ function AdminPage() {
       const imgPath = await ipcRenderer.invoke('capture-screenshot');
       console.log('Result:', imgPath); 
       setDadosPrint(imgPath);
+      insertPrint(imgPath)
 
     } catch (err) {
       console.error('Erro ao capturar a tela:', err);
