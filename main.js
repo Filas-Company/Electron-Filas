@@ -1,7 +1,6 @@
 const { app, BrowserWindow, ipcMain, globalShortcut } = require('electron');
 const screenshot = require('screenshot-desktop');
 const path = require('path');
-const fs = require('fs');
 const Jimp = require('jimp');
 const vision = require('@google-cloud/vision');
 const { API_KEY } = require('./config');
