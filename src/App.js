@@ -20,6 +20,8 @@ function AdminPage() {
       console.log('Screenshot capturada:', resultObject);
       setDadosPrint(resultObject); // Atualiza o estado com os dados da captura
       insertPrint(resultObject); // Insere no banco de dados
+
+      fetchData();
     });
 
     // Remove o event listener quando o componente for desmontado
@@ -54,6 +56,10 @@ function AdminPage() {
 
         <div className="filtros">
           <button className='btn-novo' onClick={() => insertDocument().then(fetchData)}>Inserir Novo</button>
+          <button className="btn-refresh" onClick={fetchData}>
+            Atualizar
+          </button>
+
           
           <label htmlFor="filtro"></label>
           <select

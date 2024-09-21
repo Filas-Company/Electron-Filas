@@ -47,13 +47,15 @@ app.whenReady().then(() => {
                     const [result] = await client.textDetection({ image: { content: croppedBuffer } });
                     const textArray = result.textAnnotations.map(annotation => annotation.description).filter(text => text.trim() !== '');
         
-                    const resultObject = { codigo: textArray[0], ordem: 0, imageBase64 };
+                    const resultObject = { codigo: textArray[0], ordem: 1, imageBase64 };
                     console.log(resultObject.codigo, resultObject.ordem);
         
                     // Envia os dados para o front-end via `ipcRenderer`
                     const win = BrowserWindow.getAllWindows()[0]; // Obtém a janela ativa
                     win.webContents.send('screenshot-captured', resultObject); // Envia os dados para o front-end
-        
+                    
+                    await insertPrint(resultObject);
+
                 } catch (error) {
                     console.error('Erro ao capturar a tela:', error);
                 }
