@@ -14,6 +14,17 @@ export async function getLastItem() {
   return ordemItem;
 }
 
+export async function getLastOrdemCriacao() {
+  const response = await fetch(`${API_URL}/list`);
+  const data = await response.json();
+  
+  // Encontrar o maior valor de ordem_criacao
+  const ordemCriacaoItem = data.reduce((max, item) => (item.ordem_criacao > max ? item.ordem_criacao : max), 0);
+  
+  return ordemCriacaoItem;
+}
+
+
 // Função para inserir um novo documento
 export async function insertDocument() {
   const lastItem = await getLastItem();
@@ -27,13 +38,24 @@ export async function insertDocument() {
 }
 
 export async function insertPrint(item) {
+  // 1. Obter o maior ordem_criacao
+  const ordemCriacao = await getLastOrdemCriacao() + 1;
+
+  // 2. Realizar o POST com o novo item incluindo ordem_criacao
   const response = await fetch(`${API_URL}/add`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text: item.text, codigo: item.codigo, ordem: item.ordem })
+    body: JSON.stringify({ 
+      text: item.text, 
+      codigo: item.codigo, 
+      ordem: item.ordem, 
+      ordem_criacao: ordemCriacao 
+    })
   });
+
   return response.json();
 }
+
 
 // Função para atualizar um documento
 export async function updateDocument(item) {
