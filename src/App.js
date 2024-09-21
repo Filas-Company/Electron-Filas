@@ -10,6 +10,7 @@ function AdminPage() {
   const [itens, setItens] = useState([]);
   const [filtro, setFiltro] = useState('todos'); // Estado para o filtro
   const [dadosPrint, setDadosPrint] = useState(null); // Estado para armazenar o caminho da captura de tela
+  const [shortcutEnabled, setShortcutEnabled] = useState(true); // Estado para controlar o atalho
 
   useEffect(() => {
     fetchData();
@@ -32,18 +33,10 @@ function AdminPage() {
     setItens(data);
   };
 
-  // Função para capturar a tela
-  const captureScreenshot = async () => {
-    try {
-
-      const imgPath = await ipcRenderer.invoke('capture-screenshot');
-      console.log('Result:', imgPath); 
-      setDadosPrint(imgPath);
-      insertPrint(imgPath)
-
-    } catch (err) {
-      console.error('Erro ao capturar a tela:', err);
-    }
+  const toggleShortcut = () => {
+    const newStatus = !shortcutEnabled;
+    setShortcutEnabled(newStatus);
+    ipcRenderer.send('toggle-shortcut', newStatus); // Envia para o processo main ativar/desativar
   };
 
   // Filtra os itens com base no filtro selecionado
@@ -73,14 +66,19 @@ function AdminPage() {
             <option value="proximos">Próximos</option>
           </select>
         </div>
+        <div className="container-print">
+          {dadosPrint && (
+            <div>
+              <p>Código: {dadosPrint.codigo}</p>
+              <p>{dadosPrint.ordem}</p>
+              <img src={dadosPrint.imageBase64} alt="Captura de tela" />
+            </div>
+          )}
 
-        {dadosPrint && (
-          <div>
-            <p>Código: {dadosPrint.codigo}</p>
-            <p>{dadosPrint.ordem}</p>
-            <img src={dadosPrint.imageBase64} alt="Captura de tela" />
-          </div>
-        )}
+          <button onClick={toggleShortcut} className="btn-toggle-shortcut">
+            {shortcutEnabled ? 'Desativar Captura' : 'Ativar Captura'}
+          </button>
+        </div>
 
         {/* Lista de itens filtrados */}
         {itensFiltrados.length > 0 ? (

@@ -22,43 +22,61 @@ function createWindow() {
     win.loadURL("http://localhost:3001");
 }
 
+let isShortcutActive = true;
+
 app.whenReady().then(() => {
     createWindow();
 
-    // Registra o atalho global para a tecla "Z"
-    globalShortcut.register('Z', async () => {
-        try {
-            const img = await screenshot({ format: 'png' });
-            const image = await Jimp.read(img);
-    
-            const x = 780;
-            const y = 480;
-            const width = 370;
-            const height = 200;
-    
-            image.crop(x, y, width, height);
-            const croppedBuffer = await image.getBufferAsync(Jimp.MIME_PNG);
-    
-            const imageBase64 = `data:image/png;base64,${croppedBuffer.toString('base64')}`;
-    
-            const [result] = await client.textDetection({ image: { content: croppedBuffer } });
-            const textArray = result.textAnnotations.map(annotation => annotation.description).filter(text => text.trim() !== '');
-    
-            const resultObject = { codigo: textArray[0], ordem: 0, imageBase64 };
-            console.log(resultObject.codigo, resultObject.ordem);
-    
-            // Envia os dados para o front-end via `ipcRenderer`
-            const win = BrowserWindow.getAllWindows()[0]; // Obtém a janela ativa
-            win.webContents.send('screenshot-captured', resultObject); // Envia os dados para o front-end
-    
-        } catch (error) {
-            console.error('Erro ao capturar a tela:', error);
+    const registerScreenshotShortcut = () => {
+        if (isShortcutActive) {
+            globalShortcut.register('Z', async () => {
+                try {
+                    const img = await screenshot({ format: 'png' });
+                    const image = await Jimp.read(img);
+        
+                    const x = 780;
+                    const y = 480;
+                    const width = 370;
+                    const height = 200;
+        
+                    image.crop(x, y, width, height);
+                    const croppedBuffer = await image.getBufferAsync(Jimp.MIME_PNG);
+        
+                    const imageBase64 = `data:image/png;base64,${croppedBuffer.toString('base64')}`;
+        
+                    const [result] = await client.textDetection({ image: { content: croppedBuffer } });
+                    const textArray = result.textAnnotations.map(annotation => annotation.description).filter(text => text.trim() !== '');
+        
+                    const resultObject = { codigo: textArray[0], ordem: 0, imageBase64 };
+                    console.log(resultObject.codigo, resultObject.ordem);
+        
+                    // Envia os dados para o front-end via `ipcRenderer`
+                    const win = BrowserWindow.getAllWindows()[0]; // Obtém a janela ativa
+                    win.webContents.send('screenshot-captured', resultObject); // Envia os dados para o front-end
+        
+                } catch (error) {
+                    console.error('Erro ao capturar a tela:', error);
+                }
+            });
         }
-    });
-    
+    };
+
+    // Registra o atalho quando o app está pronto
+    registerScreenshotShortcut();
 
     app.on("activate", () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    });
+
+    // Ouve eventos do front-end para ativar ou desativar o atalho
+    ipcMain.on('toggle-shortcut', (event, isEnabled) => {
+        if (isEnabled) {
+            isShortcutActive = true;
+            registerScreenshotShortcut(); // Ativa o atalho
+        } else {
+            isShortcutActive = false;
+            globalShortcut.unregister('Z'); // Desativa o atalho
+        }
     });
 });
 
