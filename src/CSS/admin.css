@@ -184,3 +184,7 @@ body {
     background-color: #a50d16;
     transform: scale(1.05);
 }
+
+.btn-adm-chamar {
+    background-color: #dbb118;
+}

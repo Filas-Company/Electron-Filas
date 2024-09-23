@@ -62,10 +62,10 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar }
         )}
 
         <button
-          className="btn-adm-del"
+          className="btn-adm-chamar"
           onClick={() => {
-            updateFila(item);
-          }}
+            updateDocument({ ...item, ordem: -1 });
+          }}          
         >
           Chamar
         </button>
