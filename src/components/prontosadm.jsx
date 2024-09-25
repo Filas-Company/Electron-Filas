@@ -39,13 +39,12 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
         value={tempCod}
         type="text"
         onChange={(e) => {
-          setTempCod(e.target.value);
+            setTempCod(e.target.value);
         }}
         onBlur={() => {
-          updateDocument({ ...item, codigo: tempCod, editcod: false });
-          setTempCod(tempCod);
+            updateDocument({ ...item, codigo: tempCod }).then(fetchData);
         }}
-      />
+    />
 
       <div className="btn-adm">
         {(item.ordem === 0 || item.ordem === -1) && (
@@ -74,6 +73,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
             deleteDocument(item).then(fetchData);
           }}
         >
+          X
         </button>
       </div>
     </li>
