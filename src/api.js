@@ -6,25 +6,6 @@ export async function getData() {
   return response.json();
 }
 
-// Função para obter o último item da fila
-export async function getLastItem() {
-  const response = await fetch(`${API_URL}/list`);
-  const data = await response.json();
-  const ordemItem = data.reduce((max, item) => (item.ordem > max ? item.ordem : max), 0);
-  return ordemItem;
-}
-
-export async function getLastOrdemCriacao() {
-  const response = await fetch(`${API_URL}/list`);
-  const data = await response.json();
-  
-  // Encontrar o maior valor de ordem_criacao
-  const ordemCriacaoItem = data.reduce((max, item) => (item.ordem_criacao > max ? item.ordem_criacao : max), 0);
-  
-  return ordemCriacaoItem;
-}
-
-
 // Função para inserir um novo documento
 export async function insertDocument() {
   const lastItem = await getLastItem();
@@ -38,22 +19,39 @@ export async function insertDocument() {
 }
 
 export async function insertPrint(item) {
-  // 1. Obter o maior ordem_criacao
   const ordemCriacao = await getLastOrdemCriacao() + 1;
+  const posItem = await getLastItem();
+  const newPosItem = posItem + 1;
 
   // 2. Realizar o POST com o novo item incluindo ordem_criacao
   const response = await fetch(`${API_URL}/add`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ 
-      text: item.text, 
+      text: "", 
       codigo: item.codigo, 
-      ordem: item.ordem, 
+      posicao: newPosItem,
+      status: 3, 
       ordem_criacao: ordemCriacao 
     })
   });
 
   return response.json();
+}
+export async function getLastOrdemCriacao() {
+  const response = await fetch(`${API_URL}/list`);
+  const data = await response.json();
+  
+  const ordemCriacaoItem = data.reduce((max, item) => (item.ordem_criacao > max ? item.ordem_criacao : max), 0);
+  
+  return ordemCriacaoItem;
+}
+export async function getLastItem() {
+  const response = await fetch(`${API_URL}/list`);
+  const data = await response.json();
+
+  const posicaoItem = data.reduce((max, item) => (item.posicao > max ? item.posicao : max), 0);
+  return posicaoItem;
 }
 
 
@@ -87,10 +85,18 @@ export async function updateVoltar(item) {
   return response.json();
 }
 
-// Função para deletar um documento
 export async function deleteDocument(item) {
   const response = await fetch(`${API_URL}/delete`, {
     method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(item)
+  });
+  return response.json();
+}
+
+export async function chamarFila(item) {
+  const response = await fetch(`${API_URL}/chamar`, {
+    method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(item)
   });

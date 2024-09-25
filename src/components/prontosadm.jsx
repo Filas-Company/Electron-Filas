@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar }) {
+function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, chamarFila, fetchData }) {
   const [tempText, setTempText] = useState(item.text);
   const [tempCod, setTempCod] = useState(item.codigo);
 
@@ -14,9 +14,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar }
     >
       <div className="pos-adm">
         <p>{
-            item.ordem === 0 ? item.ordem
-            : item.ordem === -1 ? item.ordem+2
-            : item.ordem+1
+            item.posicao
           }
         º</p>
       </div>
@@ -64,14 +62,18 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar }
         <button
           className="btn-adm-chamar"
           onClick={() => {
-            updateDocument({ ...item, ordem: -1 });
+            chamarFila(item).then(fetchData);
           }}          
         >
           Chamar
         </button>
 
-        <button className="btn-adm-del" onClick={() => deleteDocument(item)}>
-          X
+        <button 
+          className="btn-adm-del"
+          onClick={() => {
+            deleteDocument(item).then(fetchData);
+          }}
+        >
         </button>
       </div>
     </li>
