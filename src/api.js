@@ -50,7 +50,7 @@ export async function getLastItem() {
   const response = await fetch(`${API_URL}/list`);
   const data = await response.json();
 
-  const posicaoItem = data.reduce((max, item) => (item.posicao > max ? item.posicao : max), 0);
+  const posicaoItem = data.reduce((max, item) => (item.posicao > max ? item.posicao : max), 1);
   return posicaoItem;
 }
 
