@@ -19,32 +19,24 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
         º</p>
       </div>
 
-      {/* Campo de texto sempre como input */}
       <input
         className="nome-adm"
         value={tempText}
         type="text"
-        onChange={(e) => {
-          setTempText(e.target.value);
-        }}
+        onChange={(e) => setTempText(e.target.value)}
         onBlur={() => {
-          updateDocument({ ...item, text: tempText, edit: false });
-          setTempText(tempText);
+          updateDocument({ ...item, text: tempText });
         }}
       />
-
-      {/* Campo de código sempre como input */}
       <input
         className="senha-adm"
         value={tempCod}
         type="text"
-        onChange={(e) => {
-            setTempCod(e.target.value);
-        }}
+        onChange={(e) => setTempCod(e.target.value)}
         onBlur={() => {
-            updateDocument({ ...item, codigo: tempCod }).then(fetchData);
+          updateDocument({ ...item, codigo: tempCod }).then(fetchData);
         }}
-    />
+      />
 
       <div className="btn-adm">
         {(item.ordem === 0 || item.ordem === -1) && (
