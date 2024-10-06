@@ -69,7 +69,7 @@ function AdminPage() {
               <h2>Status 1</h2>
               {itensStatus1.map(item => (
                 <Pronto
-                  key={item.codigo}
+                  key={item._id}
                   item={item}
                   updateDocument={updateDocument}
                   deleteDocument={deleteDocument}
@@ -87,7 +87,7 @@ function AdminPage() {
               <h2>Status 2</h2>
               {itensStatus2.map(item => (
                 <Pronto
-                  key={item.codigo}
+                  key={item._id}
                   item={item}
                   updateDocument={updateDocument}
                   deleteDocument={deleteDocument}
@@ -105,7 +105,7 @@ function AdminPage() {
               <h2>Status 3</h2>
               {itensStatus3.map(item => (
                 <Pronto
-                  key={item.codigo}
+                  key={item._id}
                   item={item}
                   updateDocument={updateDocument}
                   deleteDocument={deleteDocument}

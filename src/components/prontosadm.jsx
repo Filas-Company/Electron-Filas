@@ -9,7 +9,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
       className="fila-adm"
       style={{
         backgroundColor:
-          item.ordem === -1 ? "#ffffff" : item.ordem === 0 ? "#ffffff" : "#ffffff",
+          item.status === 1 ? "#d2d444" : item.status === 2 ? "#666666" : "#ffffff",
       }}
     >
       <div className="pos-adm">
@@ -25,7 +25,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
         type="text"
         onChange={(e) => setTempText(e.target.value)}
         onBlur={() => {
-          updateDocument({ ...item, text: tempText });
+          updateDocument({ ...item, text: tempText }).then(fetchData);
         }}
       />
       <input
@@ -39,11 +39,11 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
       />
 
       <div className="btn-adm">
-        {(item.ordem === 0 || item.ordem === -1) && (
+        {(item.status === 1 || item.status === 2) && (
           <button
             className="btn-adm-voltar"
             onClick={() => {
-              updateVoltar({ ...item, active: !item.active });
+              updateVoltar({ ...item, status: 3 }).then(fetchData);
             }}
           >
             voltar
