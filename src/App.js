@@ -32,7 +32,7 @@ function AdminPage() {
 
   const toggleChamados = () => {
     setVerChamados(!verChamados);
-  };s
+  };
 
   const toggleShortcut = () => {
     const newStatus = !shortcutEnabled;
