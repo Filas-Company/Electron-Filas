@@ -113,7 +113,9 @@ function AdminPage() {
 
           {itensStatus3.length > 0 && (
             <ul>
-              {itensStatus3.map(item => (
+              {itensStatus3
+              .sort((a, b) => a.posicao - b.posicao)
+              .map(item => (
                 <Pronto
                   key={item._id}
                   item={item}
