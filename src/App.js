@@ -10,7 +10,8 @@ function AdminPage() {
   const [itens, setItens] = useState([]);
   const [dadosPrint, setDadosPrint] = useState(null);
   const [shortcutEnabled, setShortcutEnabled] = useState(true);
-
+  const [verChamados, setVerChamados] = useState(false);
+  
   useEffect(() => {
     fetchData();
 
@@ -28,6 +29,10 @@ function AdminPage() {
     // Ordena os itens para que aqueles com status venham primeiro
     setItens(data);
   };
+
+  const toggleChamados = () => {
+    setVerChamados(!verChamados);
+  };s
 
   const toggleShortcut = () => {
     const newStatus = !shortcutEnabled;
@@ -66,7 +71,9 @@ function AdminPage() {
         <div className="lista-itens">
           {itensStatus1.length > 0 && (
             <ul>
-              <h2>Status 1</h2>
+              <h2>
+                Chamando
+              </h2>
               {itensStatus1.map(item => (
                 <Pronto
                   key={item._id}
@@ -82,27 +89,30 @@ function AdminPage() {
             </ul>
           )}
 
-          {itensStatus2.length > 0 && (
-            <ul>
-              <h2>Status 2</h2>
-              {itensStatus2.map(item => (
-                <Pronto
-                  key={item._id}
-                  item={item}
-                  updateDocument={updateDocument}
-                  deleteDocument={deleteDocument}
-                  updateFila={updateFila}
-                  updateVoltar={updateVoltar}
-                  chamarFila={chamarFila}
-                  fetchData={fetchData}
-                />
-              ))}
-            </ul>
-          )}
+          <div>
+            <button onClick={toggleChamados}>
+              {verChamados ? 'Esconder chamados' : 'Ver já chamados'}
+            </button>
+            {verChamados && itensStatus2.length > 0 && (
+              <ul>
+                {itensStatus2.map(item => (
+                  <Pronto
+                    key={item._id}
+                    item={item}
+                    updateDocument={updateDocument}
+                    deleteDocument={deleteDocument}
+                    updateFila={updateFila}
+                    updateVoltar={updateVoltar}
+                    chamarFila={chamarFila}
+                    fetchData={fetchData}
+                  />
+                ))}
+              </ul>
+            )}
+          </div>
 
           {itensStatus3.length > 0 && (
             <ul>
-              <h2>Status 3</h2>
               {itensStatus3.map(item => (
                 <Pronto
                   key={item._id}
