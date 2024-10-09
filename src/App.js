@@ -88,12 +88,13 @@ function AdminPage() {
               ))}
             </ul>
           )}
-
-          <div>
+          
+          {itensStatus2.length > 0 && (
+            <div>
             <button onClick={toggleChamados}>
               {verChamados ? 'Esconder chamados' : 'Ver já chamados'}
             </button>
-            {verChamados && itensStatus2.length > 0 && (
+            {verChamados && (
               <ul>
                 {itensStatus2.map(item => (
                   <Pronto
@@ -110,6 +111,7 @@ function AdminPage() {
               </ul>
             )}
           </div>
+          )}
 
           {itensStatus3.length > 0 && (
             <ul>
