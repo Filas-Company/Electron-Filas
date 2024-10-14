@@ -32,8 +32,8 @@ app.whenReady().then(() => {
                     const img = await screenshot({ format: 'png' });
                     const image = await Jimp.read(img);
         
-                    const x = 780;
-                    const y = 480;
+                    const x = 1490;
+                    const y = 215;
                     const width = 370;
                     const height = 200;
         
