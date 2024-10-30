@@ -9,10 +9,15 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
       className="fila-adm"
       style={{
         backgroundColor:
-          item.status === 1 ? "#d2d444" : item.status === 2 ? "#666666" : "#ffffff",
+          item.status === 1 ? "#BE0E19" : item.status === 2 ? "#a6a6a6" : "#ffffff",
       }}
     >
-      <div className="pos-adm">
+      <div className="pos-adm"
+      style={{
+        color:
+          item.status === 1 ? "white" : item.status === 2 ? "#a6a6a6" : "#BE0E19",
+      }}
+      >
         <p>{
             item.posicao
           }
@@ -46,7 +51,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
               updateVoltar({ ...item, status: 3 }).then(fetchData);
             }}
           >
-            voltar
+            ↩
           </button>
         )}
 
@@ -56,7 +61,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
             chamarFila(item).then(fetchData);
           }}          
         >
-          Chamar
+          ☑
         </button>
 
         <button 
@@ -65,7 +70,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
             deleteDocument(item).then(fetchData);
           }}
         >
-          X
+          x
         </button>
       </div>
     </li>
