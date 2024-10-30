@@ -63,7 +63,13 @@ function AdminPage() {
           </div>
         )}
 
-        <button onClick={toggleShortcut} className="btn btn-toggle-shortcut">
+        <button 
+          onClick={toggleShortcut} 
+          style={{ 
+            backgroundColor: shortcutEnabled ? '#BE0E19' : '#68b33f', 
+          }}
+          className="btn btn-toggle-shortcut"
+        >
           {shortcutEnabled ? 'Desativar Captura' : 'Ativar Captura'}
         </button>
 
@@ -91,7 +97,12 @@ function AdminPage() {
           
           {itensStatus2.length > 0 && (
             <div>
-            <button onClick={toggleChamados} className='btn btn-chamados'>
+            <button onClick={toggleChamados} 
+            className='btn btn-chamados'
+            style={{ 
+              backgroundColor: verChamados ? '#825a41' : '#B17A5B', 
+            }}
+            >
               {verChamados ? 'Esconder chamados' : 'Ver já chamados'}
             </button>
             {verChamados && (

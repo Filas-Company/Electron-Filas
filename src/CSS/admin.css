@@ -84,18 +84,15 @@ body {
 }
 
 .btn-novo:hover {
-    background-color: #9e6d4e;
+    background-color: #825a41;
 }
 
-.btn-toggle-shortcut,
 .btn-chamados {
-    background-color: #BE0E19;
+    background-color: #B17A5B;
     
 }
-
-.btn-toggle-shortcut:hover,
 .btn-chamados:hover {
-    background-color: #BE0E19;
+    background-color: #825a41;
 }
 
 /* Seções */
@@ -147,6 +144,13 @@ body {
     background-color: #ffffff;
     box-sizing: border-box;
 }
+.nome-adm {
+    margin-left: 10px;
+}
+.senha-adm {
+    margin-left: 3px;
+    margin-right: 15px;
+}
 
 /* Ajuste para telas menores */
 @media (max-width: 768px) {
@@ -170,7 +174,7 @@ body {
 /* Botões */
 .btn-adm {
     display: flex;
-    gap: 10px;
+    gap: 3px;
 }
 
 .btn-adm button {
@@ -185,11 +189,11 @@ body {
 
 /* Botão Voltar */
 .btn-adm-voltar {
-    background-color: #5cb85c;
+    background-color: #dbb118;
 }
 
 .btn-adm-voltar:hover {
-    background-color: #4cae4c;
+    background-color: #b69314;
     transform: scale(1.05);
 }
 
@@ -197,12 +201,15 @@ body {
 .btn-adm-del {
     background-color: #BE0E19;
 }
-
 .btn-adm-del:hover {
-    background-color: #a50d16;
+    background-color: #930c15;
     transform: scale(1.05);
 }
 
 .btn-adm-chamar {
-    background-color: #dbb118;
+    background-color: #68b33f;
+}
+.btn-adm-chamar:hover {
+    background-color: #579834;
+    transform: scale(1.05);
 }
