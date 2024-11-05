@@ -65,8 +65,6 @@ app.whenReady().then(() => {
                     
                     // Armazenar o código no banco de dados
                     const objetoBanco = { codigo: textArray[0] }
-                    await insertPrint(objetoBanco);
-
                 } catch (error) {
                     console.error('Erro ao capturar a tela:', error);
                 }

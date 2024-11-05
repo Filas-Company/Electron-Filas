@@ -15,10 +15,10 @@ function AdminPage() {
   useEffect(() => {
     fetchData();
 
-    ipcRenderer.on('screenshot-captured', (event, resultObject) => {
-      setDadosPrint(resultObject);
-      insertPrint(resultObject);
-      fetchData();
+    ipcRenderer.on('screenshot-captured', async (event, resultObject) => {
+      await setDadosPrint(resultObject);
+      await insertPrint(resultObject);
+      await fetchData()
     });
 
     return () => ipcRenderer.removeAllListeners('screenshot-captured');
