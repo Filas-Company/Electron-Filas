@@ -109,11 +109,17 @@ function AdminPage() {
             <div>
             <button onClick={toggleChamados} 
             className='btn btn-chamados'
-            style={{ 
-              backgroundColor: verChamados ? '#825a41' : '#B17A5B', 
-            }}
             >
               {verChamados ? 'Esconder chamados' : 'Ver já chamados'}
+              <span class="material-symbols-outlined"
+              style={{ 
+                fontSize: "13px", 
+                verticalAlign: "middle",
+                marginLeft: "2px",
+                fontWeight: "500"}}
+              >
+               arrow_forward_ios
+              </span>
             </button>
             {verChamados && (
               <ul>
