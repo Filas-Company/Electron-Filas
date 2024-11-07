@@ -48,11 +48,31 @@ function AdminPage() {
   return (
     <div className="wrapper">
       <div className="container-proximos">
-        <h1 className="titulo-adm">FILA CATUAI</h1>
+        <h1 className="titulo-adm">FILA ONLINE</h1>
 
         <div className="filtros">
-          <button className="btn btn-novo" onClick={() => insertDocument().then(fetchData)}>Inserir Novo</button>
-          <button className="btn btn-novo" onClick={fetchData}>Atualizar</button>
+          <button className="btn btn-novo" onClick={() => insertDocument().then(fetchData)}>
+            <span class="material-symbols-outlined">add</span></button>
+          <button className="btn btn-novo" onClick={fetchData}>
+            <span class="material-symbols-outlined">
+            refresh
+            </span>
+          </button>
+          <button 
+            onClick={toggleShortcut} 
+            style={{ 
+              backgroundColor: shortcutEnabled ? '#BE0E19' : '#68b33f', 
+            }}
+            className="btn btn-toggle-shortcut"
+          >
+            {shortcutEnabled ? (
+              <>
+                <span class="material-symbols-outlined">pause</span>
+              </>
+            ) : (
+              <span class="material-symbols-outlined">play_arrow</span>
+            )}
+          </button>
         </div>
 
         {dadosPrint && (
@@ -62,16 +82,6 @@ function AdminPage() {
             <img src={dadosPrint.imageBase64} alt="Captura de tela" />
           </div>
         )}
-
-        <button 
-          onClick={toggleShortcut} 
-          style={{ 
-            backgroundColor: shortcutEnabled ? '#BE0E19' : '#68b33f', 
-          }}
-          className="btn btn-toggle-shortcut"
-        >
-          {shortcutEnabled ? 'Desativar Captura' : 'Ativar Captura'}
-        </button>
 
         {/* Exibe os itens separados por status */}
         <div className="lista-itens">

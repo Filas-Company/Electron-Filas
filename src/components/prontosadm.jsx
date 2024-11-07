@@ -44,34 +44,101 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
       />
 
       <div className="btn-adm">
-        {(item.status === 1 || item.status === 2) && (
+        {(item.status === 1) ? (
+          <div>
           <button
             className="btn-adm-voltar"
             onClick={() => {
               updateVoltar({ ...item, status: 3 }).then(fetchData);
             }}
           >
-            ↩
+            <span class="material-symbols-outlined">
+              reply
+            </span>
           </button>
+
+          <button
+            className="btn-adm-chamar"
+            onClick={() => {
+              chamarFila(item).then(fetchData);
+            }}          
+          >
+            <span class="material-symbols-outlined">
+                check
+            </span>
+          </button>
+
+          <button 
+            className="btn-adm-del"
+            onClick={() => {
+              deleteDocument(item).then(fetchData);
+            }}
+          >
+            <span class="material-symbols-outlined">
+                delete
+            </span>
+          </button>
+        </div>
+        ) : (item.status === 2) ? (
+          <div>
+            <button
+            className="btn-adm-voltar-old"
+            onClick={() => {
+              updateVoltar({ ...item, status: 3 }).then(fetchData);
+            }}
+          >
+            <span class="material-symbols-outlined">
+              reply
+            </span>
+          </button>
+
+          <button
+            className="btn-adm-chamar-old"
+            onClick={() => {
+              chamarFila(item).then(fetchData);
+            }}          
+          >
+            <span class="material-symbols-outlined">
+                check
+            </span>
+          </button>
+
+          <button 
+            className="btn-adm-del-old"
+            onClick={() => {
+              deleteDocument(item).then(fetchData);
+            }}
+          >
+            <span class="material-symbols-outlined">
+                delete
+            </span>
+          </button>
+          </div>
+        ) : (
+          <div>
+            <button
+              className="btn-adm-chamar-fila"
+              onClick={() => {
+                chamarFila(item).then(fetchData);
+              }}          
+            >
+              <span class="material-symbols-outlined">
+                  check
+              </span>
+            </button>
+
+            <button 
+              className="btn-adm-del-fila"
+              onClick={() => {
+                deleteDocument(item).then(fetchData);
+              }}
+            >
+              <span class="material-symbols-outlined">
+                  delete
+              </span>
+            </button>
+          </div>
         )}
-
-        <button
-          className="btn-adm-chamar"
-          onClick={() => {
-            chamarFila(item).then(fetchData);
-          }}          
-        >
-          ☑
-        </button>
-
-        <button 
-          className="btn-adm-del"
-          onClick={() => {
-            deleteDocument(item).then(fetchData);
-          }}
-        >
-          x
-        </button>
       </div>
     </li>
   );

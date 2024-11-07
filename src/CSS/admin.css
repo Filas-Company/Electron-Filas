@@ -22,7 +22,7 @@ body {
     padding: 6px 12px;
     font-size: 14px;
     border: 1px solid #e0e0e0;
-    border-radius: 6px;
+    border-radius: 4px;
     background-color: #ffffff;
     color: #424242;
     cursor: pointer;
@@ -64,14 +64,17 @@ body {
 
 /* Botão Novo */
 .btn {
-    padding: 6px 12px;
+    padding: 5px;
     font-size: 14px;
     cursor: pointer;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     color: #ffffff;
     transition: background-color 0.3s, transform 0.3s;
     text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn:hover {
@@ -100,7 +103,7 @@ body {
     background-color: #ffffff;
     padding: 15px;
     margin-bottom: 15px;
-    border-radius: 8px;
+    border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -113,6 +116,9 @@ body {
     padding-bottom: 10px;
 }
 
+ul {
+    padding: 0px;
+}
 /* Itens da Lista */
 .fila-adm {
     display: flex;
@@ -120,7 +126,7 @@ body {
     justify-content: space-between;
     padding: 12px;
     margin-bottom: 15px; /* Espaço entre os itens */
-    border-radius: 8px;
+    border-radius: 9px;
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -176,40 +182,86 @@ body {
     display: flex;
     gap: 3px;
 }
+.btn-adm div {
+    display: flex;
+}
 
 .btn-adm button {
-    padding: 9px 15px;
-    font-size: 19px;
+    padding: 8px;
+    font-size: 35px;
+    font-weight: 600;
     cursor: pointer;
     border: none;
-    border-radius: 6px;
-    color: #ffffff;
+    border-radius: 4px;
     transition: background-color 0.3s, transform 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
 }
 
-/* Botão Voltar */
 .btn-adm-voltar {
-    background-color: #dbb118;
+    color: white;
 }
-
 .btn-adm-voltar:hover {
-    background-color: #b69314;
+    color: rgb(255, 230, 0);
     transform: scale(1.05);
 }
 
-/* Botão Chamar */
 .btn-adm-del {
-    background-color: #BE0E19;
+    color: white;
 }
 .btn-adm-del:hover {
-    background-color: #930c15;
+    color: rgb(81, 0, 0);
     transform: scale(1.05);
 }
 
 .btn-adm-chamar {
-    background-color: #68b33f;
+    color: white;
 }
 .btn-adm-chamar:hover {
-    background-color: #579834;
+    color: #579834;
+    transform: scale(1.05);
+}
+
+
+.btn-adm-del-fila {
+    color: #BE0E19;
+}
+.btn-adm-del-fila:hover {
+    color: rgb(81, 0, 0);
+    transform: scale(1.05);
+}
+
+.btn-adm-chamar-fila {
+    color: #BE0E19;
+}
+.btn-adm-chamar-fila:hover {
+    color: #579834;
+    transform: scale(1.05);
+}
+
+
+.btn-adm-voltar-old {
+    color: #BE0E19;
+}
+.btn-adm-voltar-old:hover {
+    color: rgb(255, 230, 0);
+    transform: scale(1.05);
+}
+
+.btn-adm-del-old {
+    color: #BE0E19;
+}
+.btn-adm-del-old:hover {
+    color: rgb(81, 0, 0);
+    transform: scale(1.05);
+}
+
+.btn-adm-chamar-old {
+    color: #BE0E19;
+}
+.btn-adm-chamar-old:hover {
+    color: #579834;
     transform: scale(1.05);
 }
