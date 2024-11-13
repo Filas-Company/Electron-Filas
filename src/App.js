@@ -109,8 +109,11 @@ function AdminPage() {
             <div>
             <button onClick={toggleChamados} 
             className='btn btn-chamados'
+            style={{ 
+              color: verChamados ? '#6f6f6f' : '#9d9d9d', 
+            }}
             >
-              {verChamados ? 'Esconder chamados' : 'Ver já chamados'}
+              {verChamados ? 'Esconder chamados' : 'Ver chamados'}
               <span class="material-symbols-outlined"
               style={{ 
                 fontSize: "13px", 

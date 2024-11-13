@@ -96,7 +96,11 @@ body {
     color: #9d9d9d;
     margin-right: 10px;
     font-weight: 500;
+    font-size: 13px;
     
+}
+.btn-chamados:hover {
+    color: #6f6f6f;
 }
 
 /* Seções */
