@@ -47,7 +47,6 @@ body {
 
 /* Wrapper */
 .wrapper {
-    margin: 20px auto;
     max-width: 800px;
     padding: 20px;
     box-sizing: border-box;
@@ -55,11 +54,12 @@ body {
 
 /* Título */
 .titulo-adm {
+    margin-top: 10px;
     font-size: 28px;
     color: #424242;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 /* Botão Novo */
@@ -75,10 +75,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.btn:hover {
-    transform: scale(1.05);
 }
 
 /* Cores específicas */
@@ -163,25 +159,6 @@ ul {
     margin-right: 15px;
 }
 
-/* Ajuste para telas menores */
-@media (max-width: 768px) {
-    .nome-adm, .senha-adm {
-        width: calc(100% - 20px); /* Ajusta a largura para preencher a tela */
-        margin-bottom: 10px;
-    }
-
-    .fila-adm {
-        flex-direction: column; /* Empilha os itens verticalmente em telas pequenas */
-        align-items: flex-start; /* Alinha os itens ao início */
-    }
-
-    .btn-adm {
-        width: 100%;
-        flex-direction: column; /* Empilha os botões verticalmente */
-        gap: 8px;
-    }
-}
-
 /* Botões */
 .btn-adm {
     display: flex;
@@ -198,7 +175,7 @@ ul {
     cursor: pointer;
     border: none;
     border-radius: 4px;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -210,15 +187,13 @@ ul {
 }
 .btn-adm-voltar:hover {
     color: rgb(255, 230, 0);
-    transform: scale(1.05);
 }
 
 .btn-adm-del {
     color: white;
 }
 .btn-adm-del:hover {
-    color: rgb(81, 0, 0);
-    transform: scale(1.05);
+    color: rgb(0, 0, 0);
 }
 
 .btn-adm-chamar {
@@ -226,7 +201,6 @@ ul {
 }
 .btn-adm-chamar:hover {
     color: #579834;
-    transform: scale(1.05);
 }
 
 
@@ -234,8 +208,7 @@ ul {
     color: #BE0E19;
 }
 .btn-adm-del-fila:hover {
-    color: rgb(81, 0, 0);
-    transform: scale(1.05);
+    color: rgb(0, 0, 0);
 }
 
 .btn-adm-chamar-fila {
@@ -243,7 +216,6 @@ ul {
 }
 .btn-adm-chamar-fila:hover {
     color: #579834;
-    transform: scale(1.05);
 }
 
 
@@ -252,15 +224,13 @@ ul {
 }
 .btn-adm-voltar-old:hover {
     color: rgb(255, 230, 0);
-    transform: scale(1.05);
 }
 
 .btn-adm-del-old {
     color: #BE0E19;
 }
 .btn-adm-del-old:hover {
-    color: rgb(81, 0, 0);
-    transform: scale(1.05);
+    color: rgb(0, 0, 0);
 }
 
 .btn-adm-chamar-old {
@@ -268,5 +238,8 @@ ul {
 }
 .btn-adm-chamar-old:hover {
     color: #579834;
-    transform: scale(1.05);
+}
+
+.btn-toggle-shortcut:hover {
+    color: #000000;
 }
