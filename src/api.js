@@ -1,4 +1,7 @@
-const API_URL = 'https://backend-filas-production.up.railway.app/fila'; //Teste local: http://localhost:3000/fila
+const API_URL = 'https://backend-filas-production.up.railway.app/fila';
+// http://localhost:3000/fila
+// ou
+// https://backend-filas-production.up.railway.app/fila
 
 // Função para obter os dados
 export async function getData() {
