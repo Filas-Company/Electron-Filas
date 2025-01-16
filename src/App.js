@@ -26,7 +26,6 @@ function AdminPage() {
 
   const fetchData = async () => {
     const data = await getData();
-    // Ordena os itens para que aqueles com status venham primeiro
     setItens(data);
   };
 
@@ -126,18 +125,25 @@ function AdminPage() {
             </button>
             {verChamados && (
               <ul>
-                {itensStatus2.map(item => (
-                  <Pronto
-                    key={item._id}
-                    item={item}
-                    updateDocument={updateDocument}
-                    deleteDocument={deleteDocument}
-                    updateFila={updateFila}
-                    updateVoltar={updateVoltar}
-                    chamarFila={chamarFila}
-                    fetchData={fetchData}
-                  />
-                ))}
+                {itensStatus2
+                  .sort((a, b) => {
+                    // Ordena os itens pela hora
+                    if (a.ordem_criacao > b.ordem_criacao) return -1; // a vem antes de b
+                    if (a.ordem_criacao < b.ordem_criacao) return 1;  // a vem depois de b
+                    return 0; // Se as horas forem iguais
+                  })
+                  .map(item => (
+                    <Pronto
+                      key={item._id}
+                      item={item}
+                      updateDocument={updateDocument}
+                      deleteDocument={deleteDocument}
+                      updateFila={updateFila}
+                      updateVoltar={updateVoltar}
+                      chamarFila={chamarFila}
+                      fetchData={fetchData}
+                    />
+                  ))}
               </ul>
             )}
           </div>
@@ -146,7 +152,12 @@ function AdminPage() {
           {itensStatus3.length > 0 && (
             <ul>
               {itensStatus3
-              .sort((a, b) => a.posicao - b.posicao)
+              .sort((a, b) => {
+                // Ordena os itens pela hora
+                if (a.ordem_criacao < b.ordem_criacao) return -1; // a vem antes de b
+                if (a.ordem_criacao > b.ordem_criacao) return 1;  // a vem depois de b
+                return 0; // Se as horas forem iguais
+              })
               .map(item => (
                 <Pronto
                   key={item._id}

@@ -1,4 +1,4 @@
-const API_URL = 'https://backend-filas-production.up.railway.app/fila';
+const API_URL = 'http://localhost:3000/fila';
 // http://localhost:3000/fila
 // ou
 // https://backend-filas-production.up.railway.app/fila
@@ -17,9 +17,25 @@ export async function insertDocument() {
   const response = await fetch(`${API_URL}/add`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text: '', codigo: newItem * 100, posicao: lastPosicao + 1, status: 3, ordem_criacao: lastOrdemCriacao + 1 })
+    body: JSON.stringify({ 
+      text: '', 
+      codigo: newItem * 100, 
+      posicao: lastPosicao + 1, 
+      status: 3, 
+      ordem_criacao: lastOrdemCriacao + 1,
+     })
   });
   return response.json();
+}
+
+
+export async function getLastOrdemCriacao() {
+  const response = await fetch(`${API_URL}/list`);
+  const data = await response.json();
+  
+  const ordemCriacaoItem = data.reduce((max, item) => (item.ordem_criacao > max ? item.ordem_criacao : max), 0);
+  
+  return ordemCriacaoItem;
 }
 
 export async function insertPrint(item) {
@@ -42,14 +58,7 @@ export async function insertPrint(item) {
 
   return response.json();
 }
-export async function getLastOrdemCriacao() {
-  const response = await fetch(`${API_URL}/list`);
-  const data = await response.json();
-  
-  const ordemCriacaoItem = data.reduce((max, item) => (item.ordem_criacao > max ? item.ordem_criacao : max), 0);
-  
-  return ordemCriacaoItem;
-}
+
 export async function getLastPosicao() {
   const response = await fetch(`${API_URL}/list`);
   const data = await response.json();
