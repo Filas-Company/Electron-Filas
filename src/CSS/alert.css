@@ -26,7 +26,7 @@
 
 .custom-modal-header h2 {
   margin: 0;
-  flex: 1; /* O <h2> ocupará o máximo espaço disponível à esquerda */
+  flex: 1;
 }
 
 .custom-overlay {

@@ -20,7 +20,7 @@ function createWindow() {
     win.loadURL("http://localhost:3001");
 }
 
-let isShortcutActive = true;
+let isShortcutActive = false;
 
 app.whenReady().then(() => {
     createWindow();

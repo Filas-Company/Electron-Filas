@@ -12,17 +12,31 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
           item.status === 1 ? "#BE0E19" : item.status === 2 ? "#a6a6a6" : "#ffffff",
       }}
     >
-      <div className="pos-adm"
-      style={{
-        color:
-          item.status === 1 ? "white" : item.status === 2 ? "#a6a6a6" : "#BE0E19",
-      }}
-      >
-        <p>{
-            item.posicao
-          }
-        º</p>
-      </div>
+
+      {item.status === 1 || item.status === 3 ? (
+        <div className="pos-adm"
+        style={{
+          color:
+            item.status === 1 ? "white" : "#BE0E19",
+        }}
+        >
+          <p>{
+              item.posicao
+            }
+          º</p>
+        </div>
+      ) : (
+        <button
+          className="btn-voltar-3"
+          onClick={() => {
+            updateVoltar({ ...item, status: 3 }).then(fetchData);
+          }}
+        >
+          <span class="material-symbols-outlined">
+            reply
+          </span>
+        </button>
+      )}
 
       <input
         className="nome-adm"
@@ -57,17 +71,6 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
             </span>
           </button>
 
-          <button
-            className="btn-adm-chamar"
-            onClick={() => {
-              chamarFila(item).then(fetchData);
-            }}          
-          >
-            <span class="material-symbols-outlined">
-                check
-            </span>
-          </button>
-
           <button 
             className="btn-adm-del"
             onClick={() => {
@@ -81,16 +84,6 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
         </div>
         ) : (item.status === 2) ? (
           <div>
-            <button
-            className="btn-adm-voltar-old"
-            onClick={() => {
-              updateVoltar({ ...item, status: 3 }).then(fetchData);
-            }}
-          >
-            <span class="material-symbols-outlined">
-              reply
-            </span>
-          </button>
 
           <button
             className="btn-adm-chamar-old"

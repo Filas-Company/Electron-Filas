@@ -10,7 +10,7 @@ const { ipcRenderer } = window.require('electron');
 function AdminPage() {
   const [itens, setItens] = useState([]);
   const [dadosPrint, setDadosPrint] = useState(null);
-  const [shortcutEnabled, setShortcutEnabled] = useState(true);
+  const [shortcutEnabled, setShortcutEnabled] = useState(false);
   const [verChamados, setVerChamados] = useState(false);
   
   useEffect(() => {
@@ -91,8 +91,8 @@ function AdminPage() {
         <div className="lista-itens">
           {itensStatus1.length > 0 && (
             <ul>
-              <h2>
-                Chamando
+              <h2 className='h2-chamando'>
+                Chamando:
               </h2>
               {itensStatus1.map(item => (
                 <Pronto
@@ -154,6 +154,9 @@ function AdminPage() {
 
           {itensStatus3.length > 0 && (
             <ul>
+              <h2 className='h2-proximo'>
+                Próximos:
+              </h2>
               {itensStatus3
               .sort((a, b) => {
                 // Ordena os itens pela hora
