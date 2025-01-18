@@ -1,7 +1,8 @@
+
 import { useState, useEffect } from 'react';
-import Pronto from './components/prontosadm';
+import Pronto from './components/prontosadm.jsx';
 import './CSS/admin.css';
-import { getData, insertDocument, updateDocument, updateFila, updateVoltar, deleteDocument, insertPrint, chamarFila } from './api.js';
+import { getData, insertDocument, updateDocument, updateVoltar, deleteDocument, insertPrint, chamarFila } from './api.js';
 
 // Importação do ipcRenderer
 const { ipcRenderer } = window.require('electron');
@@ -51,12 +52,15 @@ function AdminPage() {
 
         <div className="filtros">
           <button className="btn btn-novo" onClick={() => insertDocument().then(fetchData)}>
-            <span class="material-symbols-outlined">add</span></button>
+            <span class="material-symbols-outlined">add</span>
+          </button>
+
           <button className="btn btn-novo" onClick={fetchData}>
             <span class="material-symbols-outlined">
             refresh
             </span>
           </button>
+
           <button 
             onClick={toggleShortcut} 
             style={{ 
@@ -72,6 +76,7 @@ function AdminPage() {
               <span class="material-symbols-outlined">play_arrow</span>
             )}
           </button>
+
         </div>
 
         {dadosPrint && (
@@ -95,7 +100,6 @@ function AdminPage() {
                   item={item}
                   updateDocument={updateDocument}
                   deleteDocument={deleteDocument}
-                  updateFila={updateFila}
                   updateVoltar={updateVoltar}
                   chamarFila={chamarFila}
                   fetchData={fetchData}
@@ -138,7 +142,6 @@ function AdminPage() {
                       item={item}
                       updateDocument={updateDocument}
                       deleteDocument={deleteDocument}
-                      updateFila={updateFila}
                       updateVoltar={updateVoltar}
                       chamarFila={chamarFila}
                       fetchData={fetchData}
@@ -164,7 +167,6 @@ function AdminPage() {
                   item={item}
                   updateDocument={updateDocument}
                   deleteDocument={deleteDocument}
-                  updateFila={updateFila}
                   updateVoltar={updateVoltar}
                   chamarFila={chamarFila}
                   fetchData={fetchData}

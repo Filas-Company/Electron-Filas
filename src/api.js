@@ -11,62 +11,16 @@ export async function getData() {
 
 // Função para inserir um novo documento
 export async function insertDocument() {
-  const lastOrdemCriacao = await getLastOrdemCriacao();
-  const lastPosicao = await getLastPosicao();
-  const newItem = lastPosicao + 1;
+  const ultimoResponse = await fetch(`${API_URL}/buscarUltimo`);
+  const ultimo = await ultimoResponse.json();
+
   const response = await fetch(`${API_URL}/add`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
-      text: '', 
-      codigo: newItem * 100, 
-      posicao: lastPosicao + 1, 
-      status: 3, 
-      ordem_criacao: lastOrdemCriacao + 1,
-     })
+    body: JSON.stringify({ codigo: ultimo * 100 })
   });
   return response.json();
 }
-
-
-export async function getLastOrdemCriacao() {
-  const response = await fetch(`${API_URL}/list`);
-  const data = await response.json();
-  
-  const ordemCriacaoItem = data.reduce((max, item) => (item.ordem_criacao > max ? item.ordem_criacao : max), 0);
-  
-  return ordemCriacaoItem;
-}
-
-export async function insertPrint(item) {
-  const ordemCriacao = await getLastOrdemCriacao() + 1;
-  const posItem = await getLastPosicao();
-  const newPosItem = posItem + 1;
-
-  // 2. Realizar o POST com o novo item incluindo ordem_criacao
-  const response = await fetch(`${API_URL}/add`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
-      text: "", 
-      codigo: item.codigo, 
-      posicao: newPosItem,
-      status: 3, 
-      ordem_criacao: ordemCriacao 
-    })
-  });
-
-  return response.json();
-}
-
-export async function getLastPosicao() {
-  const response = await fetch(`${API_URL}/list`);
-  const data = await response.json();
-
-  const posicaoItem = data.reduce((max, item) => (item.posicao > max ? item.posicao : max), 1);
-  return posicaoItem;
-}
-
 
 // Função para atualizar um documento
 export async function updateDocument(item) {
@@ -78,15 +32,6 @@ export async function updateDocument(item) {
   return response.json();
 }
 
-// Função para atualizar a fila
-export async function updateFila(item) {
-  const response = await fetch(`${API_URL}/updatefila`, {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(item)
-  });
-  return response.json();
-}
 
 // Função para atualizar o "voltar"
 export async function updateVoltar(item) {
@@ -113,5 +58,20 @@ export async function chamarFila(item) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(item)
   });
+  return response.json();
+}
+
+
+// Electron
+
+export async function insertPrint(item) {
+  const response = await fetch(`${API_URL}/add`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 
+      codigo: item.codigo
+    })
+  });
+
   return response.json();
 }
