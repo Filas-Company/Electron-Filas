@@ -153,6 +153,7 @@ ul {
     color: #6f6f6f;
     font-weight: 600;
 }
+
 .h2-proximo {
     font-weight: 600;
     margin-bottom: 5px;
@@ -215,7 +216,7 @@ ul {
     background: none;
     border: none;
     margin-left: -9px;
-    margin-right: -9px;
+    margin-right: -10px;
     margin-top: 12px;
     margin-bottom: 12px;
     cursor: pointer;
