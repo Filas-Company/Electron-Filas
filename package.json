@@ -2,7 +2,13 @@
   "name": "react-with-electron",
   "version": "0.1.0",
   "private": true,
-  "main": "main.js",
+  "main": "./public/electron.js",
+  "homepage": "./",
+  "author": {
+    "name": "Willian Hiroshi e Luccas Philot",
+    "email": "w.hiro.fkd@gmail.com"
+  },
+  "description": "teste fila",
   "dependencies": {
     "@google-cloud/vision": "^4.3.2",
     "@testing-library/jest-dom": "^5.17.0",
@@ -22,9 +28,23 @@
   "scripts": {
     "start": "set PORT=3001 && react-scripts start",
     "build": "react-scripts build",
+    "dist": "electron-builder",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron": "electron ."
+    "electron": "electron .",
+    "electron:package:win": "npm run build && electron-builder -w -c.extraMetadata.main=build/electron.js"
+  },
+  "build": {
+    "appId": "com.fila.electron",
+    "productName": "Fila Online",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*",
+      "config.js"
+    ],
+    "directories": {
+      "buildResources": "public"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +65,7 @@
     ]
   },
   "devDependencies": {
-    "electron": "^32.1.0"
+    "electron": "^32.1.0",
+    "electron-builder": "^25.1.8"
   }
 }

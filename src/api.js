@@ -43,6 +43,24 @@ export async function updateVoltar(item) {
   return response.json();
 }
 
+export async function updateDesce(item) {
+  const response = await fetch(`${API_URL}/updateDesce`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(item)
+  });
+  return response.json();
+}
+
+export async function updateSobe(item) {
+  const response = await fetch(`${API_URL}/updateSobe`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(item)
+  });
+  return response.json();
+}
+
 export async function deleteDocument(item) {
   const response = await fetch(`${API_URL}/delete`, {
     method: 'DELETE',

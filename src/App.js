@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import Pronto from './components/prontosadm.jsx';
 import './CSS/admin.css';
-import { getData, insertDocument, updateDocument, updateVoltar, deleteDocument, insertPrint, chamarFila } from './api.js';
+import { getData, insertDocument, updateDocument, updateVoltar, deleteDocument, insertPrint, chamarFila, updateDesce, updateSobe } from './api.js';
 
 // Importação do ipcRenderer
 const { ipcRenderer } = window.require('electron');
@@ -173,6 +173,8 @@ function AdminPage() {
                   updateVoltar={updateVoltar}
                   chamarFila={chamarFila}
                   fetchData={fetchData}
+                  updateDesce={updateDesce}
+                  updateSobe={updateSobe}
                 />
               ))}
             </ul>

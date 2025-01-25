@@ -289,3 +289,32 @@ ul {
 .btn-toggle-shortcut:hover {
     color: #000000;
 }
+
+.sobe-desce {
+    display: flex;
+    flex-direction: column; /* Alinha os botões verticalmente */
+    align-items: center; /* Centraliza os botões horizontalmente */
+    gap: 0px; /* Espaçamento entre os botões */
+}
+.sobe, .desce {
+    background-color: none;
+    border: none;
+    cursor: pointer;
+    color: #BE0E19;
+}
+.sobe span {
+    margin-bottom: -10px;
+    font-size: 25px;
+    margin-top: -10px;
+}
+.sobe:hover {
+    color: #000000;
+}
+.desce span {
+    margin-top: -10px;
+    font-size: 25px;
+    margin-bottom: -10px;
+}
+.desce:hover {
+    color: #000000;
+}

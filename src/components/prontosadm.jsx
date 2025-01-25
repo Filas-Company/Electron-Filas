@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, chamarFila, fetchData }) {
+function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, chamarFila, fetchData, updateDesce, updateSobe }) {
   const [tempText, setTempText] = useState(item.text);
   const [tempCod, setTempCod] = useState(item.codigo);
 
@@ -130,6 +130,20 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
                   delete
               </span>
             </button>
+            <div className="sobe-desce">
+              <button className="sobe"
+              onClick={() => {
+                updateSobe({...item}).then(fetchData);
+              }}>
+                <span class="material-symbols-outlined">keyboard_arrow_up</span>
+              </button>
+              <button className="desce"
+              onClick={() => {
+                updateDesce({...item}).then(fetchData);
+              }}>
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+              </button>
+            </div>
           </div>
         )}
       </div>

@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain, globalShortcut } = require('electron');
 const screenshot = require('screenshot-desktop');
 const sharp = require('sharp');
 const vision = require('@google-cloud/vision');
-const { API_KEY } = require('./config');
+const { API_KEY } = require('../config');
 
 const client = new vision.ImageAnnotatorClient({
     apiKey: API_KEY
