@@ -293,27 +293,37 @@ ul {
 .sobe-desce {
     display: flex;
     flex-direction: column; /* Alinha os botões verticalmente */
-    align-items: center; /* Centraliza os botões horizontalmente */
     gap: 0px; /* Espaçamento entre os botões */
+    margin-left: -12px;
+    margin-right: -8px;
+}
+.sobe-desce p {
+    text-align: center;
+    margin: 0px;
+    margin-left: 3px;
+    font-size: 18px;
+    font-weight: bold;
 }
 .sobe, .desce {
-    background-color: none;
+    background: none;
     border: none;
     cursor: pointer;
     color: #BE0E19;
+    display: flex;
+    align-items: center;
 }
 .sobe span {
-    margin-bottom: -10px;
+    margin-top: 0px;
+    margin-bottom: -8px;
     font-size: 25px;
-    margin-top: -10px;
+}
+.desce span {
+    margin-top: -8px;
+    margin-bottom: 0px;
+    font-size: 25px;
 }
 .sobe:hover {
     color: #000000;
-}
-.desce span {
-    margin-top: -10px;
-    font-size: 25px;
-    margin-bottom: -10px;
 }
 .desce:hover {
     color: #000000;

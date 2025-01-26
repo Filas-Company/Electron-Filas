@@ -13,18 +13,32 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
       }}
     >
 
-      {item.status === 1 || item.status === 3 ? (
+      { item.status===1 ? (
         <div className="pos-adm"
-        style={{
-          color:
-            item.status === 1 ? "white" : "#BE0E19",
-        }}
-        >
-          <p>{
-              item.posicao
-            }
-          º</p>
+        style={{ color: "white" }}>
+          <p>{ item.posicao }º</p>
         </div>
+
+      ) : item.status===3 ? (
+        <div className="sobe-desce"
+        style={{ color: "#BE0E19" }}>
+          <button className="sobe"
+            onClick={() => {
+              updateSobe({...item}).then(fetchData);
+            }}>
+              <span class="material-symbols-outlined">keyboard_arrow_up</span>
+          </button>
+
+          <p>{ item.posicao }º</p>
+
+          <button className="desce"
+            onClick={() => {
+              updateDesce({...item}).then(fetchData);
+            }}>
+              <span class="material-symbols-outlined">keyboard_arrow_down</span>
+          </button>
+        </div>
+
       ) : (
         <button
           className="btn-voltar-3"
@@ -130,20 +144,6 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
                   delete
               </span>
             </button>
-            <div className="sobe-desce">
-              <button className="sobe"
-              onClick={() => {
-                updateSobe({...item}).then(fetchData);
-              }}>
-                <span class="material-symbols-outlined">keyboard_arrow_up</span>
-              </button>
-              <button className="desce"
-              onClick={() => {
-                updateDesce({...item}).then(fetchData);
-              }}>
-                <span class="material-symbols-outlined">keyboard_arrow_down</span>
-              </button>
-            </div>
           </div>
         )}
       </div>
