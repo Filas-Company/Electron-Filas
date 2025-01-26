@@ -160,8 +160,8 @@ function AdminPage() {
               {itensStatus3
               .sort((a, b) => {
                 // Ordena os itens pela hora
-                if (a.ordem_criacao < b.ordem_criacao) return -1; // a vem antes de b
-                if (a.ordem_criacao > b.ordem_criacao) return 1;  // a vem depois de b
+                if (a.posicao < b.posicao) return -1; // a vem antes de b
+                if (a.posicao > b.posicao) return 1;  // a vem depois de b
                 return 0; // Se as horas forem iguais
               })
               .map(item => (
