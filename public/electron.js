@@ -3,6 +3,9 @@ const screenshot = require('screenshot-desktop');
 const sharp = require('sharp');
 const vision = require('@google-cloud/vision');
 const { API_KEY } = require('../config');
+const path = require("path");
+
+let isDev = true; //true = local --- false = producao
 
 const client = new vision.ImageAnnotatorClient({
     apiKey: API_KEY
@@ -17,7 +20,8 @@ function createWindow() {
             contextIsolation: false,
         }
     });
-    win.loadURL("http://localhost:3001");
+    console.log('Is Development Mode:', isDev);
+    win.loadURL(isDev ? "http://localhost:3001" : `file://${path.join(__dirname, "../build/index.html")}`);
 }
 
 let isShortcutActive = false;
@@ -62,7 +66,7 @@ app.whenReady().then(() => {
                     // Envia os dados para o front-end via `ipcRenderer`
                     const win = BrowserWindow.getAllWindows()[0]; // Obtém a janela ativa
                     win.webContents.send('screenshot-captured', resultObject); // Envia os dados para o front-end
-                    
+
                     // Armazenar o código no banco de dados
                     const objetoBanco = { codigo: textArray[0] }
                 } catch (error) {

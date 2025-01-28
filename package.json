@@ -8,7 +8,7 @@
     "name": "Willian Hiroshi e Luccas Philot",
     "email": "w.hiro.fkd@gmail.com"
   },
-  "description": "teste fila",
+  "description": "App Fila",
   "dependencies": {
     "@google-cloud/vision": "^4.3.2",
     "@testing-library/jest-dom": "^5.17.0",
@@ -28,11 +28,12 @@
   "scripts": {
     "start": "set PORT=3001 && react-scripts start",
     "build": "react-scripts build",
-    "dist": "electron-builder",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron": "electron .",
-    "electron:package:win": "npm run build && electron-builder -w -c.extraMetadata.main=build/electron.js"
+    "electron:package:win": "npm run build && electron-builder -w -c.extraMetadata.main=build/electron.js",
+    "electron:package:mac": "npm run build && electron-builder -m -c.extraMetadata.main=build/electron.js",
+    "electron:package:linux": "npm run build && electron-builder -l -c.extraMetadata.main=build/electron.js"
   },
   "build": {
     "appId": "com.fila.electron",
@@ -40,6 +41,7 @@
     "files": [
       "build/**/*",
       "node_modules/**/*",
+      "build/electron.js",
       "config.js"
     ],
     "directories": {
