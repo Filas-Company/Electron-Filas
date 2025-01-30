@@ -35,10 +35,10 @@ app.whenReady().then(() => {
                 try {
                     const img = await screenshot({ format: 'png' });
 
-                    const x = 30;
-                    const y = 230;
-                    const width = 370;
-                    const height = 200;
+                    const x = 47;
+                    const y = 79;
+                    const width = 180;
+                    const height = 14;
 
                     // Verifica as dimensões da imagem
                     const { width: imgWidth, height: imgHeight } = await sharp(img).metadata();
