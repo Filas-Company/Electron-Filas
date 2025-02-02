@@ -38,6 +38,9 @@
   "build": {
     "appId": "com.fila.electron",
     "productName": "Fila Online",
+    "asarUnpack": [
+      "node_modules/screenshot-desktop/**"
+    ],  
     "files": [
       "build/**/*",
       "node_modules/**/*",

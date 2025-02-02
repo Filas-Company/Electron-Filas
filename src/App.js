@@ -83,7 +83,7 @@ function AdminPage() {
           <div className="container-print">
             <p>A senha <strong>{dadosPrint.codigo}</strong> foi adicionado!</p>
             <p>{dadosPrint.ordem}</p>
-            {/*<img src={dadosPrint.imageBase64} alt="Captura de tela" />*/}
+            <img src={dadosPrint.imageBase64} alt="Captura de tela" />
           </div>
         )}
 
