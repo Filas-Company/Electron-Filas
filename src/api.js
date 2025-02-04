@@ -17,7 +17,7 @@ export async function insertDocument() {
   const response = await fetch(`${API_URL}/add`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ codigo: ultimo * 100 })
+    body: JSON.stringify({ codigo: ultimo * 10 })
   });
   return response.json();
 }
