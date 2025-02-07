@@ -197,12 +197,13 @@ ul {
     font-size: 16px;
     background-color: #ffffff;
     box-sizing: border-box;
+    text-align: center;
 }
 .nome-adm {
-    margin-left: 12px;
+    margin-left: 16px;
 }
 .senha-adm {
-    margin-left: 3px;
+    margin-left: 10px;
     margin-right: 6px;
 }
 
