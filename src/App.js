@@ -49,7 +49,8 @@ function AdminPage() {
     <div className="wrapper">
       <div className="container-proximos">
         <div className="container-header">
-          <h1 className="titulo-adm">FILA ONLINE</h1>
+          <h1 className="titulo-adm">FILA</h1>
+          <h1 className="res-adm">Koala</h1>
 
           <div className="filtros">
             <button className="btn btn-novo" onClick={() => insertDocument().then(fetchData)}>

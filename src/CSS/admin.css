@@ -35,12 +35,21 @@ body {
     align-items: center;
 }
 .titulo-adm {
-    font-size: 28px;
+    font-size: 29px;
     color: black;
     font-weight: bold;
     text-align: left;
     display: inline-block;
 }
+.res-adm {
+    font-size: 29px;
+    color: var(--corPrincipal);
+    font-weight: 500;
+    text-align: left;
+    display: inline-block;
+    margin-left: 5px;
+}
+
 .filtros {
     display: flex;
     align-items: center;
@@ -99,10 +108,12 @@ body {
 
 /* Cores específicas */
 .btn-novo {
-    background-color: black;
+    background-color: var(--cinzaClaro);
 }
-
 .btn-novo:hover {
+    background-color: var(--cinzaEscuro);
+}
+.btn-novo :active {
     background-color: var(--corPrincipal);
 }
 
@@ -346,6 +357,9 @@ ul {
 .status-1 button{
     color: var(--corPrincipal);
 }
+.status-1 button :active {
+    filter: brightness(70%);
+}
 .status-1 p {
     text-align: center;
     margin-right: -3px;
@@ -366,6 +380,9 @@ ul {
 .status-2 button {
     color: white;
 }
+.status-2 button :active {
+    filter: brightness(70%);
+}
 .status-2 input {
     background-color: #8c8c8c;
     color: white;
@@ -379,6 +396,9 @@ ul {
     background-color: var(--cinzaClarinho);
     color: black;
     border: none;
+}
+.status-3 button :active {
+    filter: brightness(70%);
 }
 
 .ativado {
