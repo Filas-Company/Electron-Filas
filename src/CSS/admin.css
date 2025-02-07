@@ -87,7 +87,7 @@ body {
 
 .wrapper {
     max-width: 800px;
-    width: 100vw;
+    width: 90vw;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -390,7 +390,7 @@ ul {
 }
 
 .status-3 {
-    background-color: vwhite;
+    background-color: white;
 }
 .status-3 input {
     background-color: var(--cinzaClarinho);
