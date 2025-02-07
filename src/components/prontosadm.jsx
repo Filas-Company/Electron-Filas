@@ -50,6 +50,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
         className="nome-adm"
         value={tempText}
         type="text"
+        placeholder="Nome"
         onChange={(e) => setTempText(e.target.value)}
         onBlur={() => {
           updateDocument({ ...item, text: tempText }).then(fetchData);
@@ -59,6 +60,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
         className="senha-adm"
         value={tempCod}
         type="text"
+        placeholder="Senha"
         onChange={(e) => setTempCod(e.target.value)}
         onBlur={() => {
           updateDocument({ ...item, codigo: tempCod }).then(fetchData);
