@@ -1,26 +1,51 @@
-/* Geral */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    font-family: "Poppins", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+}
+
+:root {
+    --cinzaClarinho: #f4f4f4;
+    --cinzaClaro: #999999;
+    --cinzaEscuro: #424242;
+    --corPrincipal: #FDB92E;
+    --corPClaro: #ffcb64;
+    --corPEscuro: #b37700;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
-    color: #424242;
+    color: var(--cinzaEscuro);
     margin: 0;
     padding: 0;
-    margin: 0; /* Remove margens padrão */
-    padding: 0; /* Remove espaçamentos padrão */
+    margin: 0; 
+    padding: 0; 
     height: 100%; /* Garante que o body ocupe a tela inteira */
-    display: flex; /* Define o body como flex container */
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
 }
 
-/* Estilo geral para filtros */
+.container-header {
+    display: flex;
+    height: 100px;
+    align-items: center;
+}
+.titulo-adm {
+    font-size: 28px;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+    display: inline-block;
+}
 .filtros {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Alinha os itens ao início */
-    gap: 10px; /* Espaço entre os itens */
-    width: 100%; /* Garante que o contêiner ocupe toda a largura disponível */
-    margin-bottom: 15px;
+    gap: 10px; 
+    margin-left: auto;
 }
 
 /* Estilo do select */
@@ -47,25 +72,15 @@ body {
 /* Estilo do label */
 .filtros label {
     font-size: 14px;
-    color: #424242;
+    color: var(--cinzaEscuro);
     margin-left: auto; /* Move o label para a extrema direita */
 }
 
-/* Wrapper */
 .wrapper {
     max-width: 800px;
+    width: 100vw;
     padding: 20px;
     box-sizing: border-box;
-}
-
-/* Título */
-.titulo-adm {
-    margin-top: 10px;
-    font-size: 28px;
-    color: #424242;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 25px;
 }
 
 /* Botão Novo */
@@ -84,11 +99,11 @@ body {
 
 /* Cores específicas */
 .btn-novo {
-    background-color: #B17A5B;
+    background-color: black;
 }
 
 .btn-novo:hover {
-    background-color: #825a41;
+    background-color: var(--corPrincipal);
 }
 
 .btn-chamados {
@@ -99,7 +114,7 @@ body {
     padding: 0; 
     cursor: pointer;
     color: #9d9d9d;
-    margin-right: 10px;
+    margin-right: 0px;
     margin-bottom: -12px;
     margin-top: -12px;
     font-weight: 500;
@@ -116,7 +131,6 @@ body {
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Parágrafo */
@@ -125,6 +139,7 @@ body {
     font-size: 20px;
     color: #424242;
     margin: 0;
+    margin-top: 50px;
     padding-bottom: 10px;
 }
 
@@ -136,14 +151,14 @@ ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 10px;
-    padding-right: 5px;
     margin-bottom: 7px; /* Espaço entre os itens */
     border-radius: 9px;
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 5px;
+    height: 55px;
 }
 
 .h2-chamando {
@@ -162,17 +177,10 @@ ul {
     font-size: 13pt;
 }
 
-/* Posição */
-.pos-adm {
-    font-size: 18px;
-    font-weight: bold;
-    color: #B17A5B;
-}
-
 /* Campos de Entrada */
 .nome-adm, .senha-adm {
     width: calc(45% - 20px);
-    padding: 10px;
+    padding: 5px;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
     font-size: 16px;
@@ -212,14 +220,15 @@ ul {
 
 
 .btn-voltar-3{
-    color: #BE0E19;
+    color: black;
     background: none;
     border: none;
-    margin-left: -9px;
+    margin-left: -10px;
     margin-right: -10px;
-    margin-top: 12px;
-    margin-bottom: 12px;
+    display: flex;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
 }
 .btn-voltar-3:hover {
     color: rgb(255, 230, 0);
@@ -235,55 +244,52 @@ ul {
     color: rgb(255, 230, 0);
 }
 
-.btn-adm-del {
-    color: white;
-}
-.btn-adm-del:hover {
-    color: rgb(0, 0, 0);
-}
-
 .btn-adm-chamar {
-    color: white;
+    color: black;
 }
 .btn-adm-chamar:hover {
-    color: #579834;
+    color: #57e60a;
 }
 
 
 .btn-adm-del-fila {
-    color: #BE0E19;
+    color: black;
 }
 .btn-adm-del-fila:hover {
-    color: rgb(0, 0, 0);
+    color: #e70a19;
+}
+
+.btn-adm-del:hover {
+    color: #e70a19;
 }
 
 .btn-adm-chamar-fila {
-    color: #BE0E19;
+    color: black;
 }
 .btn-adm-chamar-fila:hover {
-    color: #579834;
+    color: rgb(69, 255, 36);
 }
 
 
 .btn-adm-voltar-old {
-    color: #BE0E19;
+    color: black;
 }
 .btn-adm-voltar-old:hover {
     color: rgb(255, 230, 0);
 }
 
 .btn-adm-del-old {
-    color: #BE0E19;
+    color: black;
 }
 .btn-adm-del-old:hover {
-    color: rgb(0, 0, 0);
+    color: #e70a19;
 }
 
 .btn-adm-chamar-old {
-    color: #BE0E19;
+    color: black;
 }
 .btn-adm-chamar-old:hover {
-    color: #579834;
+    color: rgb(69, 255, 36);
 }
 
 .btn-toggle-shortcut:hover {
@@ -300,31 +306,91 @@ ul {
 .sobe-desce p {
     text-align: center;
     margin: 0px;
-    margin-left: 3px;
+    margin-left: 6px;
+    margin-top: -12px;
+    margin-bottom: -12px;
     font-size: 18px;
     font-weight: bold;
+    color: black;
 }
 .sobe, .desce {
     background: none;
     border: none;
     cursor: pointer;
-    color: #BE0E19;
+    color: var(--cinzaClaro);
     display: flex;
     align-items: center;
 }
 .sobe span {
     margin-top: 0px;
-    margin-bottom: -8px;
-    font-size: 25px;
+    margin-bottom: 0px;
+    font-size: 28px;
 }
 .desce span {
-    margin-top: -8px;
+    margin-top: 0px;
     margin-bottom: 0px;
-    font-size: 25px;
+
+    font-size: 28px;
 }
 .sobe:hover {
-    color: #000000;
+    color: var(--corPrincipal);
 }
 .desce:hover {
-    color: #000000;
+    color: var(--corPrincipal);
+}
+
+.status-1 {
+    background-color: black;
+
+}
+.status-1 button{
+    color: var(--corPrincipal);
+}
+.status-1 p {
+    text-align: center;
+    margin-right: -3px;
+    margin-left: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--corPrincipal);
+}
+.status-1 input {
+    background-color: #2c2c2c;
+    color: var(--corPrincipal);
+    border: none;
+}
+
+.status-2 {
+    background-color: var(--cinzaClaro);
+}
+.status-2 button {
+    color: white;
+}
+.status-2 input {
+    background-color: #8c8c8c;
+    color: white;
+    border: none;
+}
+
+.status-3 {
+    background-color: vwhite;
+}
+.status-3 input {
+    background-color: var(--cinzaClarinho);
+    color: black;
+    border: none;
+}
+
+.ativado {
+    background-color: rgb(222, 7, 7);
+}
+.ativado :hover{
+    background-color: rgb(176, 9, 9);
+}
+
+.desativado {
+    background-color: #43ab0b;
+}
+.desativado :hover{
+    background-color: #36880a;
 }

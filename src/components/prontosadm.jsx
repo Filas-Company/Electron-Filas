@@ -5,13 +5,7 @@ function Item({ item, updateDocument, deleteDocument, updateFila, updateVoltar, 
   const [tempCod, setTempCod] = useState(item.codigo);
 
   return (
-    <li
-      className="fila-adm"
-      style={{
-        backgroundColor:
-          item.status === 1 ? "#BE0E19" : item.status === 2 ? "#a6a6a6" : "#ffffff",
-      }}
-    >
+    <li className={`fila-adm ${item.status === 1 ? "status-1" : item.status === 2 ? "status-2" : "status-3"}`}>
 
       { item.status===1 ? (
         <div className="pos-adm"

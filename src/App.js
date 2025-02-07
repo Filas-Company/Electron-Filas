@@ -48,35 +48,35 @@ function AdminPage() {
   return (
     <div className="wrapper">
       <div className="container-proximos">
-        <h1 className="titulo-adm">FILA ONLINE</h1>
+        <div className="container-header">
+          <h1 className="titulo-adm">FILA ONLINE</h1>
 
-        <div className="filtros">
-          <button className="btn btn-novo" onClick={() => insertDocument().then(fetchData)}>
-            <span class="material-symbols-outlined">add</span>
-          </button>
+          <div className="filtros">
+            <button className="btn btn-novo" onClick={() => insertDocument().then(fetchData)}>
+              <span class="material-symbols-outlined">add</span>
+            </button>
 
-          <button className="btn btn-novo" onClick={fetchData}>
-            <span class="material-symbols-outlined">
-            refresh
-            </span>
-          </button>
+            <button className="btn btn-novo" onClick={fetchData}>
+              <span class="material-symbols-outlined">
+              refresh
+              </span>
+            </button>
 
-          <button 
-            onClick={toggleShortcut} 
-            style={{ 
-              backgroundColor: shortcutEnabled ? '#BE0E19' : '#68b33f', 
-            }}
-            className="btn btn-toggle-shortcut"
-          >
-            {shortcutEnabled ? (
-              <>
-                <span class="material-symbols-outlined">pause</span>
-              </>
-            ) : (
-              <span class="material-symbols-outlined">play_arrow</span>
-            )}
-          </button>
+            <button 
+              onClick={toggleShortcut} 
+              className={`btn print ${shortcutEnabled ? 
+                "ativado" : "desativado"}`}
+            >
+              {shortcutEnabled ? (
+                <>
+                  <span class="material-symbols-outlined">pause</span>
+                </>
+              ) : (
+                <span class="material-symbols-outlined">play_arrow</span>
+              )}
+            </button>
 
+          </div>
         </div>
 
         {dadosPrint && (
