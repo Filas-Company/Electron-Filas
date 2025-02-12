@@ -113,7 +113,7 @@ body {
 .btn-novo:hover {
     background-color: var(--cinzaEscuro);
 }
-.btn-novo :active {
+.btn-novo:active {
     background-color: var(--corPrincipal);
 }
 
@@ -418,13 +418,13 @@ ul {
 .ativado {
     background-color: rgb(222, 7, 7);
 }
-.ativado :hover{
+.ativado:hover{
     background-color: rgb(176, 9, 9);
 }
 
 .desativado {
     background-color: #43ab0b;
 }
-.desativado :hover{
+.desativado:hover{
     background-color: #36880a;
 }
