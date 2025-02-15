@@ -4,6 +4,7 @@ const sharp = require('sharp');
 const vision = require('@google-cloud/vision');
 const { API_KEY } = require('../config');
 const path = require("path");
+require('dotenv').config();
 
 let isDev = true; //true = local --- false = producao
 
@@ -15,8 +16,6 @@ function createWindow() {
     const win = new BrowserWindow({
         width: 800,
         height: 600,
-        minWidth: 400,  // Largura mínima
-        minHeight: 300, // Altura mínima
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
@@ -77,6 +76,14 @@ app.whenReady().then(() => {
             });
         }
     };
+
+    ipcMain.handle('get-env', async () => {
+        return {
+            COLLECTION: process.env.COLLECTION,
+            API_URL: process.env.API_URL
+        };
+    });
+    
 
     // Registra o atalho quando o app está pronto
     registerScreenshotShortcut();
