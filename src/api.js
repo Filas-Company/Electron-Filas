@@ -1,12 +1,13 @@
 const { ipcRenderer } = window.require('electron');
 
-const API_URL = 'http://localhost:3000/fila';
+const API_URL = 'https://backend-filas.fly.dev/fila';
 // http://localhost:3000/fila
-// ou
+// https://backend-filas.fly.dev/fila
 // https://backend-filas-production.up.railway.app/fila
 
 
 let COLLECTION = '';
+
 async function loadEnv() { //carrega variavel de ambiente
   const env = await ipcRenderer.invoke('get-env');
   COLLECTION = env.COLLECTION;
@@ -16,7 +17,7 @@ await loadEnv();
 
 // Função para obter os dados
 export async function getData() {
-  if (!COLLECTION) await loadEnv();
+  //if (!COLLECTION) await loadEnv();
   const response = await fetch(`${API_URL}/list/${COLLECTION}`);
   return response.json();
 }
@@ -29,7 +30,7 @@ export async function insertDocument() {
   const response = await fetch(`${API_URL}/add/${COLLECTION}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ codigo: ultimo * 10 })
+    body: JSON.stringify({ codigo: ultimo })
   });
   return response.json();
 }

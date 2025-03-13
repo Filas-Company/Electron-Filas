@@ -54,11 +54,11 @@ function AdminPage() {
 
           <div className="filtros">
             <button className="btn btn-novo" onClick={() => insertDocument().then(fetchData)}>
-              <span class="material-symbols-outlined">add</span>
+              <span className="material-symbols-outlined">add</span>
             </button>
 
             <button className="btn btn-novo" onClick={fetchData}>
-              <span class="material-symbols-outlined">
+              <span className="material-symbols-outlined">
               refresh
               </span>
             </button>
@@ -70,10 +70,10 @@ function AdminPage() {
             >
               {shortcutEnabled ? (
                 <>
-                  <span class="material-symbols-outlined">pause</span>
+                  <span className="material-symbols-outlined">pause</span>
                 </>
               ) : (
-                <span class="material-symbols-outlined">play_arrow</span>
+                <span className="material-symbols-outlined">play_arrow</span>
               )}
             </button>
 
@@ -118,7 +118,7 @@ function AdminPage() {
             }}
             >
               {verChamados ? 'Esconder chamados' : 'Ver chamados'}
-              <span class="material-symbols-outlined"
+              <span className="material-symbols-outlined"
               style={{ 
                 fontSize: "13px", 
                 verticalAlign: "middle",

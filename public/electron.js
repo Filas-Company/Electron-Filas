@@ -6,7 +6,7 @@ const { API_KEY } = require('../config');
 const path = require("path");
 require('dotenv').config();
 
-let isDev = true; //true = local --- false = producao
+let isDev = false; //true = local --- false = producao
 
 const client = new vision.ImageAnnotatorClient({
     apiKey: API_KEY
@@ -36,10 +36,10 @@ app.whenReady().then(() => {
                 try {
                     const img = await screenshot({ format: 'png' });
 
-                    const x = 47;
-                    const y = 79;
-                    const width = 180;
-                    const height = 14;
+                    const x = 260;
+                    const y =280;
+                    const width = 215;
+                    const height = 70;
 
                     // Verifica as dimensões da imagem
                     const { width: imgWidth, height: imgHeight } = await sharp(img).metadata();
