@@ -17,7 +17,7 @@ await loadEnv();
 
 // Função para obter os dados
 export async function getData() {
-  //if (!COLLECTION) await loadEnv();
+  if (!COLLECTION) await loadEnv();
   const response = await fetch(`${API_URL}/list/${COLLECTION}`);
   return response.json();
 }
@@ -96,7 +96,7 @@ export async function insertPrint(item) {
   const response = await fetch(`${API_URL}/add/${COLLECTION}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
+    body: JSON.stringify({
       codigo: item.codigo
     })
   });
