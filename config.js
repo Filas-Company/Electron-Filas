@@ -1,4 +1,4 @@
 // config.js
 module.exports = {
-  API_KEY: 'AIzaSyBlrE-ZrM4FfQbIhJQZRgO2aJMjxeaDx8s'
+  API_KEY: 'AIzaSyD49IJpBpMoW6zbx7cBhjIHNw54LeMbcPU'
 };

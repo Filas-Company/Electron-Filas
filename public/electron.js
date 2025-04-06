@@ -6,7 +6,7 @@ const { API_KEY } = require('../config');
 const path = require("path");
 require('dotenv').config();
 
-let isDev = false; //true = local --- false = producao
+let isDev = true; //true = local --- false = producao
 
 const client = new vision.ImageAnnotatorClient({
     apiKey: API_KEY

@@ -1,6 +1,6 @@
 const { ipcRenderer } = window.require('electron');
 
-const API_URL = 'https://backend-filas.fly.dev/fila';
+const API_URL = 'http://localhost:3000/fila';
 // http://localhost:3000/fila
 // https://backend-filas.fly.dev/fila
 // https://backend-filas-production.up.railway.app/fila
